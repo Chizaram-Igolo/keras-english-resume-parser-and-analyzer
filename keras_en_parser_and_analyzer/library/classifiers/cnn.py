@@ -4,15 +4,15 @@ from keras.layers import Dense
 from keras.layers import Flatten
 from keras.layers import Dropout
 from keras.layers import Embedding
-from keras.layers.convolutional import Conv1D
-from keras.layers.convolutional import MaxPooling1D
-from keras.layers.merge import concatenate
+from keras.layers import Conv1D
+from keras.layers import MaxPooling1D
+from keras.layers import concatenate
 from keras.callbacks import ModelCheckpoint
 import numpy as np
 import os
 
 from keras.preprocessing.sequence import pad_sequences
-from keras.utils import np_utils
+from keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
 
 from keras_en_parser_and_analyzer.library.utility.tokenizer_utils import word_tokenize
@@ -120,8 +120,12 @@ class WordVecCnn(object):
             xs.append(wid_list)
             ys.append(self.labels[label])
 
+        print(xs)
+        print(ys)
+
         X = pad_sequences(xs, maxlen=self.max_len)
-        Y = np_utils.to_categorical(ys, len(self.labels))
+        Y = to_categorical(ys, len(self.labels))
+
 
         x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=random_state)
         print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
@@ -273,7 +277,7 @@ class WordVecMultiChannelCnn(object):
             ys.append(self.labels[label])
 
         X = pad_sequences(xs, maxlen=self.max_len)
-        Y = np_utils.to_categorical(ys, len(self.labels))
+        Y = to_categorical(ys, len(self.labels))
 
         weight_file_path = WordVecMultiChannelCnn.get_weight_file_path(model_dir_path)
         checkpoint = ModelCheckpoint(weight_file_path)

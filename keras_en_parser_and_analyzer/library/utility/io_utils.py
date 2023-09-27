@@ -12,11 +12,13 @@ def read_pdf_and_docx(dir_path, collected=None, command_logging=False, callback=
             txt = None
             if f.lower().endswith('.docx'):
                 if command_logging:
-                    print('extracting text from docx: ', file_path)
+                    pass
+                    # print('extracting text from docx: ', file_path)
                 txt = docx_to_text(file_path)
             elif f.lower().endswith('.pdf'):
                 if command_logging:
-                    print('extracting text from pdf: ', file_path)
+                    pass
+                    # print('extracting text from pdf: ', file_path)
                 txt = pdf_to_text(file_path)
             if txt is not None and len(txt) > 0:
                 if callback is not None:
@@ -25,6 +27,7 @@ def read_pdf_and_docx(dir_path, collected=None, command_logging=False, callback=
         elif os.path.isdir(file_path):
             read_pdf_and_docx(file_path, collected, command_logging, callback)
 
+    print("This is collected", collected)
     return collected
 
 

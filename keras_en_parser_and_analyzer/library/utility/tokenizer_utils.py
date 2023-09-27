@@ -2,6 +2,8 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import nltk
 
+# nltk.download('punkt')
+
 
 def create_tokenizer(lines):
     tokenizer = Tokenizer()
