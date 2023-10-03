@@ -19,6 +19,7 @@ class ResumeParser(object):
 
     def parse(self, texts, print_line=False):
         self.raw = texts
+
         for p in texts:
             if len(p) > 10:
                 s = word_tokenize(p.lower())

@@ -19,14 +19,14 @@ def main():
 
         parser = ResumeParser()
         parser.parse(file_content)
-        print(parser.raw)  # print out the raw contents extracted from pdf or docx files
+        # print(parser.raw)  # print out the raw contents extracted from pdf or docx files
 
         if parser.unknown is False:
             print(parser.summary())
 
         print('++++++++++++++++++++++++++++++++++++++++++')
 
-    print('count: ', len(collected))
+    print('\ncount: ', len(collected))
 
 
 if __name__ == '__main__':

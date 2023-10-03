@@ -27,7 +27,6 @@ def read_pdf_and_docx(dir_path, collected=None, command_logging=False, callback=
         elif os.path.isdir(file_path):
             read_pdf_and_docx(file_path, collected, command_logging, callback)
 
-    print("This is collected", collected)
     return collected
 
 

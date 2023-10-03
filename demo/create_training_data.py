@@ -115,7 +115,7 @@ def main():
     current_dir = os.path.dirname(__file__)
     current_dir = current_dir if current_dir != '' else '.'
 
-    data_dir_path = current_dir + '/data'  # directory to scan for any pdf files
+    data_dir_path = current_dir + '/data/resume_samples'  # directory to scan for any pdf files
     training_data_dir_path = current_dir + '/data/training_data'
     collected = read_pdf_and_docx(data_dir_path, command_logging=True, callback=lambda index, file_path, file_content: {
         gui_annotate(training_data_dir_path, index, file_path, file_content)

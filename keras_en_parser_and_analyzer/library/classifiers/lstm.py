@@ -357,7 +357,7 @@ class WordVecBidirectionalLstmSoftmax(object):
             ys.append(self.labels[label])
 
         X = pad_sequences(xs, maxlen=self.max_len)
-        Y = np_utils.to_categorical(ys, len(self.labels))
+        Y = to_categorical(ys, len(self.labels))
 
         x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=random_state)
         print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
